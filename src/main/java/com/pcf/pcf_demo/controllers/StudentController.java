@@ -38,6 +38,11 @@ public class StudentController {
         return this.studentService.getStudentById(studentID);
     }
 
+    @GetMapping("/getAllCourse/{studentID}")
+    public List getAllCourseByStudentId(@PathVariable Integer studentID) {
+        return this.studentService.getAllCourseByStudentId(studentID);
+    }
+
     @PostMapping("")
     public Student createStudent(@RequestBody Student student) {
         return this.studentService.createStudent(student);
