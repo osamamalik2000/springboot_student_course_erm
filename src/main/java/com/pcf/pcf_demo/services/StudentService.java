@@ -73,4 +73,18 @@ public class StudentService {
         this.studentRepository.save(studentToUpdate);
         return studentToUpdate;
     }
+
+    public void deleteStudentFromCourse(Integer studentID, Integer courseID) {
+        List<Enrollment> enrollmentList = this.enrollRepository.findAll();
+        // Get an iterator for the list
+        Iterator<Enrollment> iterator = enrollmentList.iterator();
+
+        // Use the iterator to traverse the elements
+        while (iterator.hasNext()) {
+            Enrollment element = iterator.next();
+            if (element.getStudentId() == studentID && element.getCourseId() == courseID) {
+                this.enrollRepository.delete(element);
+            }
+        }
+    }
 }

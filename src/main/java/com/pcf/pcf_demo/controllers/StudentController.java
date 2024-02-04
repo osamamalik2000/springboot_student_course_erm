@@ -58,6 +58,12 @@ public class StudentController {
         this.studentService.deleteStudent(studentID);
         return ResponseEntity.ok(new ApiResponse("Student deleted successfully", true));
     }
+
+    @DeleteMapping("/delete/{studentID}/{courseID}")
+    public ResponseEntity<ApiResponse> deleteStudentFromCourse(@PathVariable Integer studentID, @PathVariable Integer courseID) {
+        this.studentService.deleteStudentFromCourse(studentID, courseID);
+        return ResponseEntity.ok(new ApiResponse("Student removed from course successfully", true));
+    }
     
     
 }
